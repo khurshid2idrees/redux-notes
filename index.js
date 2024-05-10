@@ -6,7 +6,7 @@ import logger from "redux-logger";
 const store = createStore(reducer, applyMiddleware(logger.default));
 
 
-
+// action name 
 
 
 // reducer
@@ -24,10 +24,26 @@ function reducer(state = { amount: 1 }, action) {
   return state;
 }
 
-// setInterval(() => {
-store.dispatch({ type: "incrementByAmount", payload: 4 });
-// }, 2000);
 
-// store.dispatch({ type: "increment" });
+
+// Action creators
+
+function increment() {
+  return { type: "increment" };
+}
+
+function decrement() {
+  return { type: "decrement" };
+}
+
+function incrementByAmount(value) {
+  return { type: "incrementByAmount" , payload:value};
+}
+
+
+setInterval(() => {
+store.dispatch(incrementByAmount(5));
+}, 2000);
+
 
 console.log(store.getState());
